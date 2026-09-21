@@ -1,8 +1,15 @@
-from dataclasses import Field
-
 from pydantic import BaseModel, Field
-class Book(BaseModel):
-    id: int = Field(..., description="Identificador unico del libro")
-    title: str = Field(..., description="Titulo del libro")
-    author: str = Field(..., description="Autor del libro")
-    year: int = Field(..., description="Año de publicacion")
+
+
+class Editorial(BaseModel):
+    idEd: int = Field(..., description="Identificador único de la editorial")
+    nombre: str = Field(..., description="Nombre de la editorial")
+    pais: str = Field(..., description="País de la editorial")
+
+
+class Libro(BaseModel):
+    ISBN: str = Field(..., description="Código ISBN del libro")
+    titulo: str = Field(..., description="Título del libro")
+    autor: str = Field(..., description="Autor del libro")
+    precio: float = Field(..., description="Precio del libro")
+    idEd: int = Field(..., description="idEd de la editorial que lo publica")
